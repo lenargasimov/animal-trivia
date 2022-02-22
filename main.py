@@ -10,7 +10,8 @@ def questions_view(index):
         questions_db = db[index]
         return render_template('quiz.html', 
                                 question=questions_db,
-                                index=index)
+                                index=index,
+                                max_index=len(db) - 1)
 
     except IndexError:
         abort(404)
