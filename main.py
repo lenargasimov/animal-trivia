@@ -8,7 +8,9 @@ app = Flask(__name__)
 def questions_view(index):
     try:
         questions_db = db[index]
-        return render_template('quiz.html', question=questions_db)
+        return render_template('quiz.html', 
+                                question=questions_db,
+                                index=index)
 
     except IndexError:
         abort(404)

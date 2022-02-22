@@ -16,5 +16,8 @@
             <p>{{ question.answer }}</p>
         </div>
     </div>
+
+    <!-- Next Question Button  -->
+    <a href="{{ url_for('questions_view', index=index+1) }}">Next Question</a>
 </body>
 </html>
