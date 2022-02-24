@@ -4,6 +4,12 @@ from model import db
 app = Flask(__name__)
 
 
+@app.route('/')
+def welcome():
+    return render_template('main.html', 
+                            questions=db)
+
+
 @app.route('/questions/<int:index>')
 def questions_view(index):
     try:
