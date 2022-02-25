@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  animal-trivia:
+    build: ./
+    command: python3 main.py
