@@ -18,7 +18,7 @@
     </div>
 
     <!-- Home Button -->
-    <a href="{{ url_for('welcome') }}">Home</a>
+    <!-- <a href="{{ url_for('welcome') }}">Home</a> -->
 
     <!-- Next Question Button -->
     <button>
@@ -29,5 +29,10 @@
         {% endif %}
     </button>
 
+    <div class="links">
+        <a href="{{ url_for('welcome') }}">Home</a>
+
+        <a href="{{ url_for('remove_question', index=index) }}">Remove This Question</a>
+    </div>
 </body>
 </html>

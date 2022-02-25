@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, abort, jsonify, request, redirect, url_for
 from model import db, save_db
 
@@ -31,7 +32,7 @@ def api_question_detail(index):
     except IndexError:
         abort(404)
 
-
+# Add question
 @app.route('/add_new_question', methods=['GET', 'POST'])
 def add_question():
 
@@ -51,6 +52,22 @@ def add_question():
         return render_template('add_question.html')
 
 
+# Remove a question
+@app.route('/remove_a_question/<int:index>', methods=['GET', 'POST'])
+def remove_question(index):
+    try:
+        if request.method == 'POST':
+            del db[index]
+            save_db()
+            return redirect(url_for('welcome'))
+
+        else:
+            return render_template('remove_question.html', question=db[index])
+    
+    except IndexError:
+        abort(404)
+
+        
 @app.route('/api/question/')
 def api_question_list():
     return jsonify(db)
